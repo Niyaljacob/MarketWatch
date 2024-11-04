@@ -25,15 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         //splash screen image
-        child: Image.asset(
-        'assets/splash1.png', 
-           width: MediaQuery.of(context).size.width, 
-        height: MediaQuery.of(context).size.height, 
-        fit: BoxFit.cover, 
-        ),
+        child: Center(child: Text('Market Watch', style: TextStyle(color: Color(0xFF0C3452), fontSize: 29, fontWeight: FontWeight.bold),))
       ),
     );
   }
