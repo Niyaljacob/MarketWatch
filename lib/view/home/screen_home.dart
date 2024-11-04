@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:market_watch/bloc/bloc/get_server_data_bloc.dart';
 
 class ScreenHome extends StatelessWidget {
   ScreenHome({super.key});
 
-  // Initialize the TextEditingController
   final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
+      appBar:  PreferredSize(
+        preferredSize: const Size.fromHeight(140),
+        child: AppBar(
+          title: const Text(
                 'Market Watch',
                 style: TextStyle(
                   color: Color(0xFF0C3452),
@@ -23,8 +21,12 @@ class ScreenHome extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20), // Space between text and search bar
-              Padding(
+          centerTitle: true,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(100),
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 15),
@@ -42,6 +44,7 @@ class ScreenHome extends StatelessWidget {
                     ],
                   ),
                   child: TextField(
+                    onChanged: (value) => context.read<GetServerDataBloc>().add(LoadServerData(value)),
                     controller: _searchController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.search, color: Color(0xFF0C3452)),
@@ -51,8 +54,13 @@ class ScreenHome extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
+            ),
           ),
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          
         ),
       ),
     );
