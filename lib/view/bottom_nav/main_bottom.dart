@@ -9,7 +9,7 @@ class BottomNavFirstPage extends StatelessWidget {
    BottomNavFirstPage({super.key});
 
   final List<Widget>pages=[
-    const ScreenHome(),
+     ScreenHome(),
      const ScreenWatchList(),
   ];
 
