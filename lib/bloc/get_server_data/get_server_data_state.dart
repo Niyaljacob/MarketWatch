@@ -13,13 +13,13 @@ final class GetServerDataLoading extends GetServerDataState {}
 
 final class GetServerDataLoaded extends GetServerDataState {
    final List<Stock> data;
-  GetServerDataLoaded(this.data);
+  const GetServerDataLoaded(this.data);
 }
 
 final class GetServerDataFailed extends GetServerDataState {
   final String errorMsg;
 
-   GetServerDataFailed(this.errorMsg);
+   const GetServerDataFailed(this.errorMsg);
 
   @override
   List<Object> get props => [errorMsg];

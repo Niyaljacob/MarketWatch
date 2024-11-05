@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class LocalStockDataBloc extends Bloc<LocalStockDataEvent, LocalStockDataState> 
       await addData(data);
 
       // Emit LocalStockDataAdded to notify successful addition
-      emit(LocalStockDataAdded());
+      emit(const LocalStockDataAdded());
       // Reload the data to refresh the list in UI
       List<LocalStock> updatedData = await getAllLocalData();
       emit(LocalStockDataLoaded(updatedData));
