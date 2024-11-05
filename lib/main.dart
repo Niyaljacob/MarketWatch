@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:market_watch/bloc/bloc/get_server_data_bloc.dart';
+import 'package:market_watch/bloc/bloc/local_stock_data_bloc.dart';
+import 'package:market_watch/bloc/get_server_data/get_server_data_bloc.dart';
 import 'package:market_watch/view/splash/screen_splash.dart';
 
 void main() {
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => GetServerDataBloc(),
         ),
-       
+        BlocProvider(
+          create: (context) => LocalStockDataBloc(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
          
         ),
-        home: SplashScreen()
+        home: const SplashScreen()
       ),
     );
   }

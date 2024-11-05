@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:market_watch/model/company_model.dart';
 
 Future<List<Stock>> fetchStockData(searchKey) async {
-  var apiKey = '7MFGL58YV0994AQK';
+  var apiKey = 'K7XQA6VM8F0D9RV3';
   var url = Uri.parse('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=$searchKey&apikey=$apiKey');
   debugPrint('Search URL: $url');
   try {
@@ -46,7 +46,7 @@ Future<List<Stock>> fetchStockData(searchKey) async {
 }
 
 Future<Stock?> fetchStockPrice(String symbol, String companyName) async {
-  var apiKey = 'CQ0NX8WMV47CP8PA';
+  var apiKey = 'WIG3SZW30P4VMDZ';
   var url = Uri.parse('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=$symbol&apikey=$apiKey');
   debugPrint(url.toString());
 
