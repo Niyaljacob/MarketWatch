@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:market_watch/view/bottom_nav/main_bottom.dart';
+import 'package:market_watch/view/splash/widget/center_text.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,8 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       body: Center(
         //splash screen image
-        child: Center(child: Text('Market Watch', style: TextStyle(color: Color(0xFF0C3452), fontSize: 29, fontWeight: FontWeight.bold),))
+        child: CenterText()
       ),
     );
   }
 }
+

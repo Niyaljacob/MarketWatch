@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:market_watch/bloc/bloc/local_stock_data_bloc.dart';
+import 'package:market_watch/utils/constants.dart';
 import 'package:market_watch/view/home/widget/custom_snack_bar.dart';
 import 'package:market_watch/view/home/widget/snakbar.dart';
 
@@ -14,7 +14,7 @@ class ScreenWatchList extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Watchlist',
-          style: TextStyle(color: Color(0xFF0C3452), fontWeight: FontWeight.w700),
+          style: TextStyle(color: primary, fontWeight: FontWeight.w700),
         ),
         centerTitle: true,
       ),
@@ -35,13 +35,7 @@ class ScreenWatchList extends StatelessWidget {
                 builder: (context) {
                   if (state is LocalStockDataLoaded) {
                     if (state.data.isEmpty) {
-                      return Center(
-                  child: Lottie.asset(
-                'assets/stock_search.json',
-                width: 300,
-                height: 300,
-                fit: BoxFit.fill
-              ));
+                      return searchLottie;
                     }
                     return GridView.builder(
                       itemCount: state.data.length,
@@ -56,11 +50,11 @@ class ScreenWatchList extends StatelessWidget {
                         final data = state.data[index];
                         return Container(
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: white,
                             borderRadius: BorderRadius.circular(12),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.grey.withOpacity(0.4),
+                                color: greyOpacity,
                                 spreadRadius: 2,
                                 blurRadius: 8,
                                 offset: const Offset(0, 4),
@@ -78,7 +72,7 @@ class ScreenWatchList extends StatelessWidget {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
-                                    color: Colors.black87,
+                                    color: black87,
                                   ),
                                 ),
                               ),
@@ -86,7 +80,7 @@ class ScreenWatchList extends StatelessWidget {
                                 'Stock rate: ₹${data.stockPrice}',
                                 style: const TextStyle(
                                   fontSize: 14,
-                                  color: Colors.blueGrey,
+                                  color: blueGrey,
                                 ),
                               ),
                               const Divider(
@@ -98,7 +92,7 @@ class ScreenWatchList extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 8.0),
                                 child: IconButton(
-                                  icon: const Icon(Icons.delete, color: Color(0xFF0C3452)),
+                                  icon: const Icon(Icons.delete, color: primary),
                                   onPressed: () {
                                     styleAlertDialog(
                                       context: context,
@@ -108,7 +102,7 @@ class ScreenWatchList extends StatelessWidget {
                                       firstButtonText: 'Cancel',
                                       secondButtonAction: () {
                                         context.read<LocalStockDataBloc>().add(DeleteData(data.id!));
-                                        customSnackbar(context, 'Removed from watchlist', 'The stock was removed from the watchlist', const Color(0xFF0C3452));
+                                        customSnackbar(context, 'Removed from watchlist', 'The stock was removed from the watchlist', primary);
                                         context.read<LocalStockDataBloc>().add(LoadLocalData());
                                         Navigator.pop(context);
                                       },
